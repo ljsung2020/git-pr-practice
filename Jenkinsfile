@@ -28,10 +28,10 @@ pipeline {
             steps {
                 echo "🧪 Python HTTP 서버 실행 후 테스트"
                 sh '''
-                    nohup python3 -m http.server 8080 > server.log 2>&1 &
+                    nohup python3 -m http.server 8888 > server.log 2>&1 &
                     sleep 3
-                    curl -sI http://localhost:8080/index.html | grep "200 OK" || (echo "❌ index.html 접근 실패!" && cat server.log && exit 1)
-                    pkill -f "python3 -m http.server"
+                    curl -sI http://localhost:8888/index.html | grep "200 OK" || (echo "❌ index.html 접근 실패!" && cat server.log && exit 1)
+                    pkill -f "python3 -m http.server 8888"
                 '''
             }
         }

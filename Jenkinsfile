@@ -30,7 +30,7 @@ pipeline {
                 echo "🌐 index.html 접근 테스트"
                 sh '''
                     sleep 2
-                    curl -sI http://localhost:$HOST_PORT/index.html | grep "200 OK" || (echo "❌ 접근 실패!" && exit 1)
+                    docker exec web-preview curl -sI http://localhost/index.html | grep "200 OK" || (echo "접근실패" && exit 1 )
                 '''
             }
         }

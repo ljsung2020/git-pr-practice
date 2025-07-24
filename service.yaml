@@ -1,0 +1,14 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: static-site-service
+spec:
+  type: NodePort
+  selector:
+    app: static-site
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080  # 외부에서 접근 가능한 포트 (microk8s에서 허용된 포트 확인 필요)
+

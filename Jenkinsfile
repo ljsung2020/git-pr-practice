@@ -18,7 +18,7 @@ pipeline {
 			deployApp('production')
 		    } else {
 			echo "Non-main branch detected: Deploying to STAGING"
-			deployApp('staging')
+			deployApp('staging', 'nginx:1.21-alpine')
 		    }
 		}
 	    }

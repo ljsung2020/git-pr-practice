@@ -1,10 +1,10 @@
-@Library('my-shared-library')
+@Library('my-shared-library') _
 
 pipeline {
     agent any
 
     stages {
-	stages('Deploy') {
+	stage('Deploy') {
 	    steps {
 		deployApp('staging')
 	    }

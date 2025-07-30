@@ -11,7 +11,16 @@ pipeline {
 	}
 	stage('Deploy') {
 	    steps {
-		deployApp('staging')
+		script {
+		    def branch = env.GIT_BRANCH?.replace('origin/', '')
+		    if(branch == 'main') {
+			echo "Main branch detected: Deploying to PRODUCTION"
+			deployApp('production')
+		    } else {
+			echo "Non-main branch detected: Deploying to STAGING"
+			deployApp('staging')
+		    }
+		}
 	    }
 	}
     }
